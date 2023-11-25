@@ -29,25 +29,45 @@ let tipoObjeto ={
         country:"venezuela"
 
      }
-     
-
-
-
-
 }
 
 
 
 
 
+// una fucion
+// recibe dos parametros
+// retorne el resuta de ala division primer parametro entre el segundo parametro
 
 
 
 
-let MifuncionFlecha =
-(num1,num2,num3)=>{ return num1
-}
+let contenedor = document.querySelector("#track-list")
 
+axios.get("https://leonardoapi.onrender.com/music")
+//Gallback
+.then( 
+(response) => {
+    console.log(response.data)
+    console.log("se cumplio la promesa")
 
-console.log(MifuncionFlecha)
-console.log(7)
+    let canciones = response.data
+
+    console.log(canciones)
+    
+    canciones.map( (cancion) => {
+        let component = document.createElement("li")
+        component.classList.add("caciones")
+        component.innerHTML = `
+        <img src="${cancion.path.front}"width="120" height="120" alt="representacion visual de la portada album de MH">
+        <li class="text">shirt</li>
+        <li >MH </li>
+        `
+
+        component.addEventListener("click", () => {
+            document.querySelector("#current-song-audio").setAttribute("src",cancion.path.audio)
+        })
+        contenedor.appendChild(component)
+    })
+})
+console.log("Fin del programa")
