@@ -19,16 +19,16 @@ let tipoLista = [
     undefined
 ]
 let tipoObjeto ={
-     0:7,
-     1:60,
-     100:1915,
-     name:"mohamed",
-     password:"1234",
-     address:{
+    0:7,
+    1:60,
+    100:1915,
+    name:"mohamed",
+    password:"1234",
+    address:{
         city:"valencia",
         country:"venezuela"
-
-     }
+        
+    }
 }
 
 
@@ -47,27 +47,27 @@ let contenedor = document.querySelector("#track-list")
 axios.get("https://leonardoapi.onrender.com/music")
 //Gallback
 .then( 
-(response) => {
-    console.log(response.data)
-    console.log("se cumplio la promesa")
-
-    let canciones = response.data
-
-    console.log(canciones)
-    
-    canciones.map( (cancion) => {
-        let component = document.createElement("li")
-        component.classList.add("caciones")
-        component.innerHTML = `
-        <img src="${cancion.path.front}"width="120" height="120" alt="representacion visual de la portada album de MH">
-        <li class="text">shirt</li>
-        <li >MH </li>
-        `
-
-        component.addEventListener("click", () => {
-            document.querySelector("#current-song-audio").setAttribute("src",cancion.path.audio)
+    (response) => {
+        console.log(response.data)
+        console.log("se cumplio la promesa")
+        
+        let canciones = response.data
+        
+        console.log(canciones)
+        
+        canciones.map( (cancion) => {
+            let component = document.createElement("li")
+            component.classList.add("caciones")
+            component.innerHTML = `
+            <img src="${cancion.path.front}"width="120" height="120" alt="representacion visual de la portada album de MH">
+            <li class="text">shirt</li>
+            <li >MH </li>
+            `
+            
+            component.addEventListener("click", () => {
+                document.querySelector("#current-song-audio").setAttribute("src",cancion.path.audio)
+            })
+            contenedor.appendChild(component)
         })
-        contenedor.appendChild(component)
-    })
-})
-console.log("Fin del programa")
+        })
+        console.log("Fin del programa")
